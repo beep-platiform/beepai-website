@@ -31,7 +31,7 @@
 - [x] Perform a full CSS visual-system pass against the supplied reference image.
 - [x] Match the reference icon/wordmark, buttons, dropdowns, navigation, cards, shadows, spacing, and section proportions.
 - [x] Validate desktop, tablet, mobile, public routes, and admin compatibility after the visual refresh.
-- [ ] Replace the old dark admin styling with the current warm Beep reference style.
-- [ ] Make admin dashboard metrics, requests, messages, plans/content, and activity dynamic from Supabase.
-- [ ] Add admin loading, empty, error, save, and delete feedback states without weakening auth protection.
-- [ ] Validate responsive authenticated admin routes and redeploy the website.
+- [x] Replace the old dark admin styling with the current warm Beep reference style.
+- [x] Make admin dashboard metrics, requests, messages, plans/content, and activity dynamic from Supabase.
+- [x] Add admin loading, empty, error, and save feedback states without weakening auth protection.
+- [x] Validate responsive authenticated admin routes and redeploy the website.
