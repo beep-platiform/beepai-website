@@ -63,3 +63,78 @@ export async function signOutAdmin() {
   if (!supabase) return { error: new Error("Supabase is not configured") };
   return supabase.auth.signOut();
 }
+
+export type AdminRequest = {
+  id: string;
+  description: string;
+  involved_tools: string[];
+  frequency: string;
+  status: string;
+  created_at: string;
+};
+
+export type AdminAutomation = {
+  id: string;
+  name: string;
+  status: string;
+  schedule: string;
+  created_at: string;
+};
+
+export type AdminRun = {
+  id: string;
+  status: string;
+  duration_ms: number | null;
+  created_at: string;
+};
+
+export type AdminSnapshot = {
+  plans: Plan[];
+  content: SiteContent[];
+  requests: AdminRequest[];
+  automations: AdminAutomation[];
+  runs: AdminRun[];
+  live: boolean;
+  warnings: string[];
+};
+
+async function safeTable<T>(table: string, columns: string, query: (builder: any) => any): Promise<{ data: T[]; warning?: string }> {
+  if (!supabase) return { data: [], warning: `${table} is unavailable because Supabase is not configured.` };
+  try {
+    const response = await query(supabase.from(table).select(columns));
+    if (response.error) return { data: [], warning: `${table}: ${response.error.message}` };
+    return { data: (response.data ?? []) as T[] };
+  } catch (error) {
+    return { data: [], warning: `${table}: ${error instanceof Error ? error.message : "Request failed"}` };
+  }
+}
+
+export async function loadAdminSnapshot(): Promise<AdminSnapshot> {
+  const [plans, content, requests, automations, runs] = await Promise.all([
+    safeTable<Plan>("beepai_subscription_plans", "id,name,monthly_price_rwf,summary,features,accent", (q) => q.eq("is_active", true).order("sort_order").limit(20)),
+    safeTable<SiteContent>("beepai_site_content", "slug,title,body,category", (q) => q.eq("is_active", true).order("sort_order").limit(50)),
+    safeTable<AdminRequest>("beepai_automation_requests", "id,description,involved_tools,frequency,status,created_at", (q) => q.order("created_at", { ascending: false }).limit(25)),
+    safeTable<AdminAutomation>("beepai_user_automations", "id,name,status,schedule,created_at", (q) => q.order("created_at", { ascending: false }).limit(25)),
+    safeTable<AdminRun>("beepai_automation_runs", "id,status,duration_ms,created_at", (q) => q.order("created_at", { ascending: false }).limit(50)),
+  ]);
+  const warnings = [plans.warning, content.warning, requests.warning, automations.warning, runs.warning].filter(Boolean) as string[];
+  return { plans: plans.data.length ? plans.data : fallbackPlans, content: content.data, requests: requests.data, automations: automations.data, runs: runs.data, live: warnings.length === 0, warnings };
+}
+
+export async function updateAdminPlan(plan: Pick<Plan, "id" | "name" | "monthly_price_rwf" | "summary" | "features" | "accent">) {
+  if (!supabase) return { error: new Error("Supabase is not configured") };
+  const { error } = await supabase.from("beepai_subscription_plans").update({ name: plan.name, monthly_price_rwf: plan.monthly_price_rwf, summary: plan.summary, features: plan.features, accent: plan.accent, updated_at: new Date().toISOString() }).eq("id", plan.id);
+  return { error };
+}
+
+export async function updateAdminContent(content: Pick<SiteContent, "slug" | "title" | "body">) {
+  if (!supabase) return { error: new Error("Supabase is not configured") };
+  const { error } = await supabase.from("beepai_site_content").update({ title: content.title, body: content.body, updated_at: new Date().toISOString() }).eq("slug", content.slug);
+  return { error };
+}
+
+export async function updateAdminRequestStatus(id: string, status: string) {
+  if (!supabase) return { error: new Error("Supabase is not configured") };
+  const { error } = await supabase.from("beepai_automation_requests").update({ status, updated_at: new Date().toISOString() }).eq("id", id);
+  return { error };
+}
