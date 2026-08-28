@@ -38,3 +38,6 @@
 - [x] Diagnose why the local preview URL and the Vercel `/about` route are showing different website states.
 - [x] Synchronize and verify the local preview, GitHub source, and Vercel deployment version.
 - [x] Commit the current local preview source of truth to GitHub and verify Vercel publication.
+- [x] Fix English and French header/navigation overlap caused by longer translated labels.
+- [x] Preserve Kinyarwanda as the accurate primary interface while keeping all supported languages readable at responsive widths.
+- [x] Validate language switching and commit the multilingual layout fix.

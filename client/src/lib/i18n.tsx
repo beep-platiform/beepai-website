@@ -187,9 +187,9 @@ const I18nContext = createContext<I18nValue | null>(null);
 
 export function I18nProvider({ children }: { children: ReactNode }) {
   const [locale, setLocaleState] = useState<Locale>(() => {
-    if (typeof window === "undefined") return "en";
+    if (typeof window === "undefined") return "rw";
     const saved = window.localStorage.getItem("beep-locale");
-    return saved === "rw" || saved === "fr" ? saved : "en";
+    return saved === "en" || saved === "fr" ? saved : "rw";
   });
   const setLocale = (next: Locale) => setLocaleState(next);
   useEffect(() => {
