@@ -41,3 +41,6 @@
 - [x] Fix English and French header/navigation overlap caused by longer translated labels.
 - [x] Preserve Kinyarwanda as the accurate primary interface while keeping all supported languages readable at responsive widths.
 - [x] Validate language switching and commit the multilingual layout fix.
+- [x] Standardize headline, body, primary CTA, and secondary CTA order across public sections and admin pages.
+- [x] Add consistent sequential reveal animation with reduced-motion support.
+- [x] Validate the new content rhythm in Kinyarwanda, English, and French before redeploying.
