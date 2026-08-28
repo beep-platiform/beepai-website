@@ -2,4 +2,4 @@ User-agent: *
 Allow: /
 Disallow: /control-room
 
-Sitemap: https://beepai-mobile.vercel.app/sitemap.xml
+Sitemap: https://beepai-platiform.vercel.app/sitemap.xml
