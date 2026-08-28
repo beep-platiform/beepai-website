@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /control-room
+
+Sitemap: https://beepai-mobile.vercel.app/sitemap.xml
