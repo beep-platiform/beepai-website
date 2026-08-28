@@ -22,3 +22,9 @@
 - [x] Add working page-based dropdown menus for Product, Features, Resources, and language selection.
 - [x] Add dynamic English, Kinyarwanda, and Français interface switching with persistence.
 - [x] Validate translated routes, dropdown links, loading state, and production build.
+- [x] Create a Supabase Auth admin user through the authenticated dashboard without sharing credentials in chat.
+- [x] Verify the admin user is created and document the secure sign-in path.
+- [x] Add Supabase Auth session state to the website admin portal.
+- [x] Require authentication for every `/admin/*` URL and preserve the requested return path.
+- [x] Wire admin login, logout, auth errors, and session loading states.
+- [ ] Validate protected admin routes and publish the auth integration.

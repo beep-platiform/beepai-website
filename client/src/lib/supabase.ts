@@ -40,3 +40,26 @@ export async function loadPublicContent() {
   if (error || !data) return { content: [] as SiteContent[], live: false };
   return { content: data as SiteContent[], live: true };
 }
+
+export async function getAdminSession() {
+  if (!supabase) return { session: null, error: new Error("Supabase is not configured") };
+  const { data, error } = await supabase.auth.getSession();
+  return { session: data.session, error };
+}
+
+export function subscribeToAuth(onSession: (session: NonNullable<Awaited<ReturnType<typeof getAdminSession>>["session"]> | null) => void) {
+  if (!supabase) return { unsubscribe: () => undefined };
+  const { data } = supabase.auth.onAuthStateChange((_event, session) => onSession(session));
+  return { unsubscribe: () => data.subscription.unsubscribe() };
+}
+
+export async function signInAdmin(email: string, password: string) {
+  if (!supabase) return { error: new Error("Supabase is not configured") };
+  const { error } = await supabase.auth.signInWithPassword({ email, password });
+  return { error };
+}
+
+export async function signOutAdmin() {
+  if (!supabase) return { error: new Error("Supabase is not configured") };
+  return supabase.auth.signOut();
+}
