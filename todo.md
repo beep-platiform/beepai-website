@@ -47,3 +47,4 @@
 - [x] Replace the website text-only Beep mark with the generated Expo app icon.
 - [x] Use the generated icon consistently in public header, footer, preview, and admin branding.
 - [x] Validate the icon asset in the production build and redeploy the website.
+- [x] Replace the browser favicon with the generated Beep app icon and verify production delivery.
