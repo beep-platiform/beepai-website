@@ -44,3 +44,6 @@
 - [x] Standardize headline, body, primary CTA, and secondary CTA order across public sections and admin pages.
 - [x] Add consistent sequential reveal animation with reduced-motion support.
 - [x] Validate the new content rhythm in Kinyarwanda, English, and French before redeploying.
+- [x] Replace the website text-only Beep mark with the generated Expo app icon.
+- [x] Use the generated icon consistently in public header, footer, preview, and admin branding.
+- [x] Validate the icon asset in the production build and redeploy the website.
