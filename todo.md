@@ -27,4 +27,7 @@
 - [x] Add Supabase Auth session state to the website admin portal.
 - [x] Require authentication for every `/admin/*` URL and preserve the requested return path.
 - [x] Wire admin login, logout, auth errors, and session loading states.
-- [ ] Validate protected admin routes and publish the auth integration.
+- [x] Validate protected admin routes and publish the auth integration.
+- [x] Perform a full CSS visual-system pass against the supplied reference image.
+- [x] Match the reference icon/wordmark, buttons, dropdowns, navigation, cards, shadows, spacing, and section proportions.
+- [ ] Validate desktop, tablet, mobile, public routes, and admin compatibility after the visual refresh.
