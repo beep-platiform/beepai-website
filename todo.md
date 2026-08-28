@@ -15,3 +15,6 @@
 - [x] Add admin route structure for login, dashboard, notifications, requests, messages, users, analytics, content, and settings.
 - [x] Update the visual direction to match the new pre-interface reference palette.
 - [x] Keep the public surface Google-crawlable and the admin surface unlinked and excluded from indexing.
+- [x] Clone the supplied reference header, navigation, breadcrumb, hero, and app preview styling.
+- [x] Clone the reference benefit strip and warm app-download panel while preserving Beep copy.
+- [x] Apply the reference palette consistently across all public routes and revalidate the admin exclusion.
