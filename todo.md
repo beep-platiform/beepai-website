@@ -30,4 +30,4 @@
 - [x] Validate protected admin routes and publish the auth integration.
 - [x] Perform a full CSS visual-system pass against the supplied reference image.
 - [x] Match the reference icon/wordmark, buttons, dropdowns, navigation, cards, shadows, spacing, and section proportions.
-- [ ] Validate desktop, tablet, mobile, public routes, and admin compatibility after the visual refresh.
+- [x] Validate desktop, tablet, mobile, public routes, and admin compatibility after the visual refresh.
