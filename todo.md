@@ -10,3 +10,8 @@
 - [x] Publish a private GitHub repository for the website.
 - [x] Configure Vercel deployment and environment variable names.
 - [x] Validate public SEO, Supabase fallback states, and admin route exclusion.
+- [x] Refactor the website around public information/help pages instead of a customer portal.
+- [x] Add public routes for About, Features, How It Works, FAQ, Download, Contact, and Privacy.
+- [x] Add admin route structure for login, dashboard, notifications, requests, messages, users, analytics, content, and settings.
+- [x] Update the visual direction to match the new pre-interface reference palette.
+- [x] Keep the public surface Google-crawlable and the admin surface unlinked and excluded from indexing.
