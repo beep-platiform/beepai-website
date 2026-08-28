@@ -18,3 +18,7 @@
 - [x] Clone the supplied reference header, navigation, breadcrumb, hero, and app preview styling.
 - [x] Clone the reference benefit strip and warm app-download panel while preserving Beep copy.
 - [x] Apply the reference palette consistently across all public routes and revalidate the admin exclusion.
+- [x] Add visible loading and error-safe states while Supabase content is loading.
+- [x] Add working page-based dropdown menus for Product, Features, Resources, and language selection.
+- [x] Add dynamic English, Kinyarwanda, and Français interface switching with persistence.
+- [x] Validate translated routes, dropdown links, loading state, and production build.
