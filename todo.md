@@ -37,3 +37,4 @@
 - [x] Validate responsive authenticated admin routes and redeploy the website.
 - [x] Diagnose why the local preview URL and the Vercel `/about` route are showing different website states.
 - [x] Synchronize and verify the local preview, GitHub source, and Vercel deployment version.
+- [x] Commit the current local preview source of truth to GitHub and verify Vercel publication.
