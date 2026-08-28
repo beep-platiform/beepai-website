@@ -35,3 +35,5 @@
 - [x] Make admin dashboard metrics, requests, messages, plans/content, and activity dynamic from Supabase.
 - [x] Add admin loading, empty, error, and save feedback states without weakening auth protection.
 - [x] Validate responsive authenticated admin routes and redeploy the website.
+- [x] Diagnose why the local preview URL and the Vercel `/about` route are showing different website states.
+- [x] Synchronize and verify the local preview, GitHub source, and Vercel deployment version.
