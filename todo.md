@@ -1,0 +1,50 @@
+# BeepAI Website TODO
+
+- [x] Build public landing page with BeepAI value proposition and platform explanation.
+- [x] Add Supabase-driven public plans and feature content.
+- [x] Add use cases, privacy positioning, help section, and conversion CTAs.
+- [x] Build unlisted `/control-room` admin portal with operational overview.
+- [x] Add noindex metadata and robots exclusion for the admin route.
+- [ ] Add Supabase Auth protection before production use of admin write actions.
+- [x] Add responsive behavior and accessible keyboard/focus states.
+- [x] Publish a private GitHub repository for the website.
+- [x] Configure Vercel deployment and environment variable names.
+- [x] Validate public SEO, Supabase fallback states, and admin route exclusion.
+- [x] Refactor the website around public information/help pages instead of a customer portal.
+- [x] Add public routes for About, Features, How It Works, FAQ, Download, Contact, and Privacy.
+- [x] Add admin route structure for login, dashboard, notifications, requests, messages, users, analytics, content, and settings.
+- [x] Update the visual direction to match the new pre-interface reference palette.
+- [x] Keep the public surface Google-crawlable and the admin surface unlinked and excluded from indexing.
+- [x] Clone the supplied reference header, navigation, breadcrumb, hero, and app preview styling.
+- [x] Clone the reference benefit strip and warm app-download panel while preserving Beep copy.
+- [x] Apply the reference palette consistently across all public routes and revalidate the admin exclusion.
+- [x] Add visible loading and error-safe states while Supabase content is loading.
+- [x] Add working page-based dropdown menus for Product, Features, Resources, and language selection.
+- [x] Add dynamic English, Kinyarwanda, and Français interface switching with persistence.
+- [x] Validate translated routes, dropdown links, loading state, and production build.
+- [x] Create a Supabase Auth admin user through the authenticated dashboard without sharing credentials in chat.
+- [x] Verify the admin user is created and document the secure sign-in path.
+- [x] Add Supabase Auth session state to the website admin portal.
+- [x] Require authentication for every `/admin/*` URL and preserve the requested return path.
+- [x] Wire admin login, logout, auth errors, and session loading states.
+- [x] Validate protected admin routes and publish the auth integration.
+- [x] Perform a full CSS visual-system pass against the supplied reference image.
+- [x] Match the reference icon/wordmark, buttons, dropdowns, navigation, cards, shadows, spacing, and section proportions.
+- [x] Validate desktop, tablet, mobile, public routes, and admin compatibility after the visual refresh.
+- [x] Replace the old dark admin styling with the current warm Beep reference style.
+- [x] Make admin dashboard metrics, requests, messages, plans/content, and activity dynamic from Supabase.
+- [x] Add admin loading, empty, error, and save feedback states without weakening auth protection.
+- [x] Validate responsive authenticated admin routes and redeploy the website.
+- [x] Diagnose why the local preview URL and the Vercel `/about` route are showing different website states.
+- [x] Synchronize and verify the local preview, GitHub source, and Vercel deployment version.
+- [x] Commit the current local preview source of truth to GitHub and verify Vercel publication.
+- [x] Fix English and French header/navigation overlap caused by longer translated labels.
+- [x] Preserve Kinyarwanda as the accurate primary interface while keeping all supported languages readable at responsive widths.
+- [x] Validate language switching and commit the multilingual layout fix.
+- [x] Standardize headline, body, primary CTA, and secondary CTA order across public sections and admin pages.
+- [x] Add consistent sequential reveal animation with reduced-motion support.
+- [x] Validate the new content rhythm in Kinyarwanda, English, and French before redeploying.
+- [x] Replace the website text-only Beep mark with the generated Expo app icon.
+- [x] Use the generated icon consistently in public header, footer, preview, and admin branding.
+- [x] Validate the icon asset in the production build and redeploy the website.
+- [x] Replace the browser favicon with the generated Beep app icon and verify production delivery.
