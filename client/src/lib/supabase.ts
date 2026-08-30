@@ -151,13 +151,14 @@ export type DeliverResult = { automationId: string; redemptionCode: string } | n
  * generates its redemption code, and marks the request as delivered — all
  * in one atomic call to a security-definer RPC that checks admin membership.
  */
-export async function deliverAutomationRequest(requestId: string, name: string, description: string, schedule: string): Promise<{ result: DeliverResult; error: Error | null }> {
+export async function deliverAutomationRequest(requestId: string, name: string, description: string, schedule: string, configuration: Record<string, unknown> = {}): Promise<{ result: DeliverResult; error: Error | null }> {
   if (!supabase) return { result: null, error: new Error("Supabase is not configured") };
   const { data, error } = await supabase.rpc("admin_deliver_automation_request", {
     p_request_id: requestId,
     p_name: name,
     p_description: description,
     p_schedule: schedule,
+    p_configuration: configuration,
   });
   if (error) return { result: null, error: new Error(error.message) };
   const row = Array.isArray(data) ? data[0] : data;
