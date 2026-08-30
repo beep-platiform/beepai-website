@@ -1,4 +1,4 @@
-# BeepAI Website TODO
+# BeepAI Website TODO for beepai
 
 - [x] Build public landing page with BeepAI value proposition and platform explanation.
 - [x] Add Supabase-driven public plans and feature content.
