@@ -71,6 +71,12 @@ export type AdminRequest = {
   frequency: string;
   status: string;
   created_at: string;
+<<<<<<< HEAD
+=======
+  contact_name: string | null;
+  contact_phone: string | null;
+  contact_email: string | null;
+>>>>>>> origin/main
 };
 
 export type AdminAutomation = {
@@ -79,6 +85,11 @@ export type AdminAutomation = {
   status: string;
   schedule: string;
   created_at: string;
+<<<<<<< HEAD
+=======
+  request_id: string | null;
+  redemption_code: string | null;
+>>>>>>> origin/main
 };
 
 export type AdminRun = {
@@ -113,8 +124,13 @@ export async function loadAdminSnapshot(): Promise<AdminSnapshot> {
   const [plans, content, requests, automations, runs] = await Promise.all([
     safeTable<Plan>("beepai_subscription_plans", "id,name,monthly_price_rwf,summary,features,accent", (q) => q.eq("is_active", true).order("sort_order").limit(20)),
     safeTable<SiteContent>("beepai_site_content", "slug,title,body,category", (q) => q.eq("is_active", true).order("sort_order").limit(50)),
+<<<<<<< HEAD
     safeTable<AdminRequest>("beepai_automation_requests", "id,description,involved_tools,frequency,status,created_at", (q) => q.order("created_at", { ascending: false }).limit(25)),
     safeTable<AdminAutomation>("beepai_user_automations", "id,name,status,schedule,created_at", (q) => q.order("created_at", { ascending: false }).limit(25)),
+=======
+    safeTable<AdminRequest>("beepai_automation_requests", "id,description,involved_tools,frequency,status,created_at,contact_name,contact_phone,contact_email", (q) => q.order("created_at", { ascending: false }).limit(25)),
+    safeTable<AdminAutomation>("beepai_user_automations", "id,name,status,schedule,created_at,request_id,redemption_code", (q) => q.order("created_at", { ascending: false }).limit(25)),
+>>>>>>> origin/main
     safeTable<AdminRun>("beepai_automation_runs", "id,status,duration_ms,created_at", (q) => q.order("created_at", { ascending: false }).limit(50)),
   ]);
   const warnings = [plans.warning, content.warning, requests.warning, automations.warning, runs.warning].filter(Boolean) as string[];
@@ -138,3 +154,28 @@ export async function updateAdminRequestStatus(id: string, status: string) {
   const { error } = await supabase.from("beepai_automation_requests").update({ status, updated_at: new Date().toISOString() }).eq("id", id);
   return { error };
 }
+<<<<<<< HEAD
+=======
+
+export type DeliverResult = { automationId: string; redemptionCode: string } | null;
+
+/**
+ * Builds the customer's package: creates the delivered automation record,
+ * generates its redemption code, and marks the request as delivered — all
+ * in one atomic call to a security-definer RPC that checks admin membership.
+ */
+export async function deliverAutomationRequest(requestId: string, name: string, description: string, schedule: string, configuration: Record<string, unknown> = {}): Promise<{ result: DeliverResult; error: Error | null }> {
+  if (!supabase) return { result: null, error: new Error("Supabase is not configured") };
+  const { data, error } = await supabase.rpc("admin_deliver_automation_request", {
+    p_request_id: requestId,
+    p_name: name,
+    p_description: description,
+    p_schedule: schedule,
+    p_configuration: configuration,
+  });
+  if (error) return { result: null, error: new Error(error.message) };
+  const row = Array.isArray(data) ? data[0] : data;
+  if (!row) return { result: null, error: new Error("No package was returned.") };
+  return { result: { automationId: row.automation_id as string, redemptionCode: row.redemption_code as string }, error: null };
+}
+>>>>>>> origin/main
